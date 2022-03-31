@@ -53,7 +53,7 @@
     if (cookieCycleId && $cycles.find(c => c._id === cookieCycleId)) {
       changeCycle($cycles.find(c => c._id === cookieCycleId))
     } else {
-    setDefaultCycle($profileMeta, $cycles)
+      setDefaultCycle($availableCycles)
     }
     listenForPhaseChanges()
     listenForProposalChanges()

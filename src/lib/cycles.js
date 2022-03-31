@@ -13,20 +13,19 @@ export const currentCyclePhaseName = derived(
     }
 );
 
-export const setDefaultCycle = (user, cycles) => {
-    if (!user.roles || !Array.isArray(user.roles)) return
-    const defaultCycle = cycles.find(c => user.roles.includes(c.discordRole))
-    if (!defaultCycle) {
-        console.log('No cycle found')
-        return
-    }
+export const setDefaultCycle = (cycles) => {
+    const defaultCycle = cycles[0]
     currentCycle.set(defaultCycle)
     setCycleToCookie(defaultCycle)
 }
 
 export const setAvailableCycles = (user, cycles) => {
-    if (!user.roles || !Array.isArray(user.roles)) return
-    availableCycles.set(cycles.filter(c => user.roles.includes(c.discordRole)))
+    let publicCycles = cycles.filter(c => !c.discordRole || c.discordRole === '')
+    let roleGatedCycles = []
+    if (user.roles || Array.isArray(user.roles)) {
+        roleGatedCycles = cycles.filter(c => user.roles.includes(c.discordRole))
+    }
+    availableCycles.set([...publicCycles, ...roleGatedCycles])
 }
 
 export const changeCycle = (cycle) => {

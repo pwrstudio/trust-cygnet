@@ -38,6 +38,7 @@ export const usersInCycle = derived(
     [users, currentCycle],
     ([$users, $currentCycle]) => {
         if ($users.length === 0) return []
+        if (!$currentCycle.discordRole || $currentCycle.discordRole === '') return $users
         return $users.filter(u => _.get(u, "roles", []).includes($currentCycle.discordRole))
     }
 );
