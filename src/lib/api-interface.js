@@ -1,0 +1,145 @@
+import {
+    getTokenSilently
+} from "$lib/authentication.js"
+
+export const uploadImage = file => {
+    return new Promise(async (resolve, reject) => {
+        const requestOptions = {
+            method: "POST",
+            body: file,
+            redirect: "follow",
+        }
+        const response = await fetch("/api/upload-image", requestOptions)
+        const responseData = await response.json()
+        resolve(responseData)
+    })
+}
+
+export const saveProposal = messageBody => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Get token
+            const token = await getTokenSilently()
+            // Set message options
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify({
+                    message: messageBody,
+                    authorization: token
+                }),
+                redirect: "follow",
+            }
+            // Send message
+            const response = await fetch("/api/save-proposal", requestOptions)
+            const responseData = await response.json()
+            resolve(responseData)
+        } catch (e) {
+            console.log(e.message)
+            reject(e.message)
+        }
+    })
+}
+
+export const submitProposal = async proposal => {
+    try {
+        // Get token
+        const token = await getTokenSilently()
+        // Prepare message body
+        const rawBody = JSON.stringify({
+            proposalId: proposal._id,
+            authorization: token
+        })
+        // Set message options
+        const requestOptions = {
+            method: "POST",
+            body: rawBody,
+            redirect: "follow",
+        }
+        // Send message
+        const response = await fetch("/api/submit-proposal", requestOptions)
+        const responseData = await response.json()
+        console.log(responseData)
+    } catch (e) {
+        console.log(e.message)
+    }
+}
+
+export const getVote = cycleId => {
+    console.log("!!! GET VOTE", cycleId)
+    return new Promise(async (resolve, reject) => {
+        // Get token
+        const token = await getTokenSilently()
+        // Set message options
+        const requestOptions = {
+            method: "POST",
+            redirect: "follow",
+            body: JSON.stringify({
+                cycleId: cycleId,
+                authorization: token
+            })
+        }
+        // Send message
+        const response = await fetch("/api/get-vote", requestOptions)
+        const responseData = await response.json()
+        console.log(responseData)
+        let tempVoteAllocation = {}
+        if (responseData.voteAllocation && Array.isArray(responseData.voteAllocation)) {
+            responseData.voteAllocation.forEach(v => {
+                tempVoteAllocation[v.proposal._ref] = v.voteCredits
+            })
+        }
+        console.log('tempVoteAllocation', tempVoteAllocation)
+        resolve({ lastSavedAt: responseData._updatedAt, submitted: responseData.submitted, votes: tempVoteAllocation })
+    })
+}
+
+export const setVote = async (cycleId, voteAllocation, voteMultiplier, voteMultiplierRole, submitted) => {
+    console.log("!!! SET VOTE", cycleId, voteAllocation)
+    return new Promise(async (resolve, reject) => {
+        // Get token
+        const token = await getTokenSilently()
+        // Set message options
+        const requestOptions = {
+            method: "POST",
+            redirect: "follow",
+            body: JSON.stringify({
+                cycleId: cycleId,
+                voteAllocation: voteAllocation,
+                submitted: submitted,
+                voteMultiplier: voteMultiplier,
+                voteMultiplierRole: voteMultiplierRole,
+                authorization: token
+            })
+        }
+        // Send message
+        const response = await fetch("/api/set-vote", requestOptions)
+        const responseData = await response.json()
+        console.log(responseData)
+        resolve(responseData)
+    })
+}
+
+export const connectEthAddress = messageBody => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Get token
+            const token = await getTokenSilently()
+            // Set message options
+            const requestOptions = {
+                method: "POST",
+                body: JSON.stringify({
+                    message: messageBody,
+                    authorization: token
+                }),
+                redirect: "follow",
+            }
+            // Send message
+            const response = await fetch("/api/connect-eth-address", requestOptions)
+            const responseData = await response.json()
+            resolve(responseData)
+        } catch (e) {
+            console.log(e.message)
+            reject(e.message)
+        }
+    })
+}
