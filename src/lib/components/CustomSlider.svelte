@@ -203,7 +203,8 @@
       height: 30px;
       width: 30px;
       border-radius: 50%;
-      background: $primary-one;
+      // background: $primary-one;
+      background: $highlight;
       border: 1px solid $background-color;
       left: 0;
       top: calc(50% + 2px);

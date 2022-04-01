@@ -29,7 +29,7 @@ export const longFormatDate = date => {
 export const compactDateTimeFormat = date => {
     try {
         if (date) {
-            return format(parseISO(date), "d-MM-yyyy HH:mm:ss")
+            return format(parseISO(date), "dd-MM-yyyy HH:mm:ss")
         }
     } catch (err) {
         console.dir(err)

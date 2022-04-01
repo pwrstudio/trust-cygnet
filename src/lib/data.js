@@ -21,6 +21,14 @@ export const proposalsInCycle = derived(
     }
 );
 
+export const submittedProposalsInCycle = derived(
+    [proposalsInCycle],
+    ([$proposalsInCycle,]) => {
+        if ($proposalsInCycle.length === 0) return []
+        return $proposalsInCycle.filter(p => p.submitted)
+    }
+);
+
 export const proposalsInCycleByUser = derived(
     [proposalsInCycle, profileMeta],
     ([$proposalsInCycle, $profileMeta]) => {
@@ -47,7 +55,7 @@ export const resourcesInCycle = derived(
     [resources, currentCycle],
     ([$resources, $currentCycle]) => {
         if ($resources.length === 0) return []
-        return $resources.filter(p => _.get(p, "cycle.discordRole", "") === $currentCycle.discordRole)
+        return $resources.filter(p => _.get(p, "cycle._id", "") === $currentCycle._id)
     }
 );
 

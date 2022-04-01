@@ -191,6 +191,7 @@
           background: $primary-two;
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
+          color: $background-color;
           width: 100%;
           text-align: center;
           line-height: 25px;
@@ -235,6 +236,7 @@
           background: $primary-two;
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
+          color: $background-color;
           width: 100%;
           text-align: center;
           line-height: 25px;
@@ -268,7 +270,8 @@
 
         .inner {
           width: 100%;
-          background: $primary-one;
+          // background: $primary-one;
+          background: $highlight;
           align-self: flex-end;
         }
 
@@ -295,6 +298,7 @@
           background: $primary-two;
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
+          color: $background-color;
           width: 100%;
           text-align: center;
           line-height: 25px;

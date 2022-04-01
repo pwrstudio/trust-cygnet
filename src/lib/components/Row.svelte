@@ -81,6 +81,10 @@
       align-items: center;
       min-width: 140px;
       border-top: $border-style;
+
+      @include screen-size("small") {
+        min-width: 80px;
+      }
     }
 
     &.vote {

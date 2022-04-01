@@ -92,7 +92,7 @@
 
     &:hover {
       background: $primary-two;
-      color: $foreground-color;
+      color: $background-color;
     }
   }
 

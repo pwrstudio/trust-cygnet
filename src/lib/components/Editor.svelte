@@ -390,10 +390,11 @@
       min-width: 180px;
       font-size: $font-size-normal;
       color: $primary-two;
+      user-select: none;
 
       &:hover {
         background: $primary-two;
-        color: $foreground-color;
+        color: $background-color;
       }
     }
 

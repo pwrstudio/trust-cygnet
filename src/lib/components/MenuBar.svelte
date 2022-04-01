@@ -9,7 +9,7 @@
   import Menu from "$lib/graphics/Menu.svelte"
   import Close from "$lib/graphics/Close.svelte"
   import { currentSection } from "$lib/ui.js"
-  import { general } from "$lib/data.js"
+  import { general, resourcesInCycle } from "$lib/data.js"
   import { urlFor } from "$lib/sanity.js"
   import { onMount } from "svelte"
   import { goto } from "$app/navigation"
@@ -38,31 +38,32 @@
     slug: "result",
   }
 
-  const permanentNav = $currentCycle.phase
-    ? [
-        {
-          label: "Resources",
-          link: "/resources",
-          slug: "resources",
-        },
-        {
-          label: "Peers",
-          link: "/peers",
-          slug: "peers",
-        },
-      ]
-    : []
+  const resourcesNav = {
+    label: "Resources",
+    link: "/resources",
+    slug: "resources",
+  }
 
-  let navList = permanentNav
+  const peersNav = {
+    label: "Peers",
+    link: "/peers",
+    slug: "peers",
+  }
 
-  $: if ($currentCycle) {
+  // Construct navigation
+  let navList = []
+  $: if ($currentCycle && $currentCycle.phase) {
     if ($currentCycle.phase == "proposal") {
-      navList = [proposalNav, ...permanentNav]
+      navList = [proposalNav]
     } else if ($currentCycle.phase == "vote") {
-      navList = [voteNav, ...permanentNav]
+      navList = [voteNav]
     } else if ($currentCycle.phase == "result") {
-      navList = [resultNav, ...permanentNav]
+      navList = [resultNav]
     }
+    if ($resourcesInCycle.length > 0) {
+      navList.push(resourcesNav)
+    }
+    navList.push(peersNav)
   }
 
   let showMobileMenu = false
@@ -83,8 +84,6 @@
   onMount(async () => {
     cycleSwitchLeftPos = cycleSectionElement.offsetLeft
     cycleSwitchWidth = cycleSectionElement.offsetWidth
-
-    // userSwitchLeftPos = userSectionElement.offsetLeft
     userSwitchWidth = userSectionElement.offsetWidth
   })
 </script>
@@ -529,6 +528,7 @@
 
   .arrow-down {
     position: relative;
-    top: -2px;
+    top: -3px;
+    margin-left: 3px;
   }
 </style>

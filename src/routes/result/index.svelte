@@ -79,6 +79,11 @@
     font-family: $secondary-font;
     margin-bottom: 20px;
 
+    @include screen-size("small") {
+      flex-wrap: wrap;
+      height: auto;
+    }
+
     .item {
       width: 35%;
       display: flex;
@@ -86,12 +91,24 @@
       align-items: center;
       border-right: $border-style;
 
+      @include screen-size("small") {
+        width: 100%;
+      }
+
       &.small {
         width: 260px;
+
+        @include screen-size("small") {
+          width: 100%;
+        }
       }
 
       &.mid {
         width: 360px;
+
+        @include screen-size("small") {
+          width: 100%;
+        }
       }
 
       &:last-child {
@@ -105,6 +122,7 @@
         background: $primary-two;
         font-size: $font-size-xx-small;
         font-family: $secondary-font;
+        color: $background-color;
         width: 100%;
         text-align: center;
         line-height: 40px;
@@ -118,6 +136,10 @@
         font-size: $font-size-normal;
         font-family: $numeral-font;
         color: $foreground-color;
+
+        @include screen-size("small") {
+          height: 60px;
+        }
       }
     }
   }

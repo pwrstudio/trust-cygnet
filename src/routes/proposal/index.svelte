@@ -42,17 +42,27 @@
     justify-content: space-between;
     margin-bottom: 40px;
 
+    @include screen-size("small") {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
     .item {
       display: flex;
       align-items: center;
       border: $border-style;
       flex-direction: column;
 
+      @include screen-size("small") {
+        width: 100%;
+      }
+
       .label {
         height: 25px;
         background: $primary-two;
         font-size: $font-size-xx-small;
         font-family: $secondary-font;
+        color: $background-color;
         width: 100%;
         text-align: center;
         line-height: 25px;
@@ -88,10 +98,15 @@
     line-height: 80px;
     color: $primary-two;
     font-size: $font-size-normal;
+    user-select: none;
+
+    @include screen-size("small") {
+      margin-top: 20px;
+    }
 
     &:hover {
       background: $primary-two;
-      color: $foreground-color;
+      color: $background-color;
     }
   }
 </style>

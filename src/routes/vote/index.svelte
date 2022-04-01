@@ -8,7 +8,7 @@
   import CountDown from "$lib/components/CountDown.svelte"
   import Ellipsis from "$lib/components/Ellipsis.svelte"
   import Locked from "$lib/graphics/Locked.svelte"
-  import { proposals } from "$lib/data.js"
+  import { submittedProposalsInCycle } from "$lib/data.js"
   import { currentCycle } from "$lib/cycles.js"
   import { currentSection, compactDateTimeFormat } from "$lib/ui.js"
   currentSection.set("vote")
@@ -25,25 +25,26 @@
   let saving = false
   let submitted = false
 
-  // voteAllocation.subscribe(
-  //   debounce(vA => {
-  //     if (!votesLoaded) {
-  //       console.log("!!! VOTES NOT LOADED YET")
-  //       return
-  //     }
-  //     saving = true
-  //     setVote(
-  //       $currentCycle._id,
-  //       $voteAllocation,
-  //       $profileMeta.voteMultiplier,
-  //       $profileMeta.voteMultiplierRole || "Audience",
-  //       false
-  //     ).then(v => {
-  //       lastSavedAt = v._updatedAt
-  //       saving = false
-  //     })
-  //   }, 1000)
-  // )
+  // Save votes on change
+  voteAllocation.subscribe(
+    debounce(vA => {
+      if (!votesLoaded) {
+        console.log("!!! VOTES NOT LOADED YET")
+        return
+      }
+      saving = true
+      setVote(
+        $currentCycle._id,
+        $voteAllocation,
+        $profileMeta.voteMultiplier,
+        $profileMeta.voteMultiplierRole || "Audience",
+        false
+      ).then(v => {
+        lastSavedAt = v._updatedAt
+        saving = false
+      })
+    }, 1000)
+  )
 
   const submitVote = () => {
     saving = true
@@ -78,7 +79,7 @@
 {#if $currentCycle.phase == "vote"}
   <SectionHeader title="Vote" description={$currentCycle.textVote} />
   {#await voteDoc then voteDoc}
-    <div class="submit-header">
+    <!-- <div class="submit-header">
       <div class="role-section">
         <div class="item">
           <div class="label">Vote role</div>
@@ -96,13 +97,13 @@
             {$profileMeta.voteMultiplier}×
           </div>
         </div>
-      </div>
-      <!-- <div class="submit-vote" class:submitted on:click={submitVote}>
+      </div> -->
+    <!-- <div class="submit-vote" class:submitted on:click={submitVote}>
         {#if submitted}<Locked /> Vote submitted on {compactDateTimeFormat(
             lastSavedAt
           )}{:else}Submit vote{/if}
       </div> -->
-    </div>
+    <!-- </div> -->
     <div class="vote-header">
       <div class="item small">
         <div class="label">Remaining voice credits</div>
@@ -131,9 +132,7 @@
     </div>
     <div class="vote-container" class:submitted>
       <List
-        list={$proposals.filter(
-          p => get(p, "cycle.discordRole", "") === $currentCycle.discordRole
-        )}
+        list={$submittedProposalsInCycle}
         phase="vote"
         initialVote={voteDoc.votes}
       />
@@ -204,6 +203,7 @@
         background: $primary-two;
         font-size: $font-size-xx-small;
         font-family: $secondary-font;
+        color: $background-color;
         width: 100%;
         text-align: center;
         line-height: 40px;
@@ -272,6 +272,7 @@
           background: $primary-two;
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
+          color: $background-color;
           width: 100%;
           text-align: center;
           line-height: 25px;

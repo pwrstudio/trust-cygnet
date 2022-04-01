@@ -46,7 +46,7 @@
 
     .inner {
       width: 100%;
-      background: $primary-one;
+      background: $highlight;
       align-self: flex-end;
     }
   }
