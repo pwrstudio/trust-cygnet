@@ -1,13 +1,12 @@
 <script>
   import get from "lodash/get.js"
-  import { renderBlockText } from "$lib/sanity"
+  import { urlFor, renderBlockText } from "$lib/sanity"
   import { login } from "$lib/authentication.js"
   import { general } from "$lib/data.js"
-  import LogoAnimation from "$lib/components/LogoAnimation.svelte"
 </script>
 
 <div class="login-container">
- {#if $general.logo}
+  {#if $general.logo}
     <div class="logo-container">
       <img
         src={urlFor($general.logo).width(400).quality(100).auto("format").url()}

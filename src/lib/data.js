@@ -76,21 +76,18 @@ export const listenForPhaseChanges = () => {
     client.listen("*[_type == 'cycle']").subscribe(update => {
         if (update.result._id == get(currentCycle)._id) {
             if (update.result.phase !== get(currentCycle).phase) {
-                console.log('PHASE CHANGE')
                 goto(`/${update.result.phase}`)
             }
             currentCycle.set(update.result)
         }
         setTimeout(async () => {
             cycles.set(await loadData('*[_type == "cycle"]'))
-            console.log('new cycles set =>', get(cycles))
         }, 1000)
     })
 }
 
 export const listenForProposalChanges = () => {
     client.listen("*[_type == 'proposal']{..., authors[]->{...}, resources[]->{...}, cycle->{...}}").subscribe(update => {
-        console.log('UPDATE', update)
         setTimeout(async () => {
             proposals.set(await loadData('*[_type == "proposal"]{..., authors[]->{...}, resources[]->{...}, cycle->{...}}|order(_updatedAt desc) '))
         }, 1000)

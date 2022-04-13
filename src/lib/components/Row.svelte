@@ -9,8 +9,6 @@
 </script>
 
 <div class="row" class:vote={phase === "vote" && item._type === "proposal"}>
-  <!-- (1) INFORMATION -->
-
   <div class="information">
     <Information {item} {phase} />
   </div>
