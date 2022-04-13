@@ -26,6 +26,8 @@
     availableCycles,
   } from "$lib/cycles.js"
 
+  import { setThemeColors } from "$lib/ui.js"
+
   // DEBUG ==>
   // $: console.log("$currentCycle", $currentCycle)
   // $: console.log("$availableCycles", $availableCycles)
@@ -46,6 +48,7 @@
     if (isAuthenticated) setProfile()
     await getData()
     console.log("____ Data received")
+    setThemeColors()
     setAvailableCycles($profileMeta, $cycles)
     console.log("____ Available cycles:", $availableCycles)
     const cookieCycleId = getCycleFromCookie()
@@ -80,6 +83,13 @@
 
 <style lang="scss" global>
   @import "../variables.scss";
+
+  :root {
+    --main-color: #ff0000;
+    --main-color-two: #00ff00;
+    --main-color-three: #0000ff;
+    --highlight-color: #ffff00;
+  }
 
   * {
     box-sizing: border-box;

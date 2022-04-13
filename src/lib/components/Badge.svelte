@@ -8,8 +8,8 @@
   @import "../../variables.scss";
 
   .role-badge {
-    border: 1px solid $primary-two;
-    color: $primary-two;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
     margin-right: 5px;
     padding: 4px 7px;
     border-radius: 5px;

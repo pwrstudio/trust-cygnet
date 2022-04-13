@@ -20,7 +20,7 @@
   }
 
   path {
-    // stroke: $primary-two;
+    // stroke: var(--main-color-two);
     fill: currentcolor;
   }
 

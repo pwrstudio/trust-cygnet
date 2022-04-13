@@ -44,8 +44,8 @@
     justify-content: space-between;
     height: $bar-height;
     color: $foreground-color;
-    border-left: $border-style;
-    border-right: $border-style;
+    border-left: 2px solid var(--main-color);
+    border-right: 2px solid var(--main-color);
     user-select: none;
 
     .information {
@@ -56,8 +56,8 @@
       overflow: hidden;
       color: inherit;
       text-decoration: none;
-      border-right: $border-style;
-      border-top: $border-style;
+      border-right: 2px solid var(--main-color);
+      border-top: 2px solid var(--main-color);
 
       &:last-child {
         border-right: none;
@@ -78,7 +78,7 @@
       justify-content: center;
       align-items: center;
       min-width: 140px;
-      border-top: $border-style;
+      border-top: 2px solid var(--main-color);
 
       @include screen-size("small") {
         min-width: 80px;

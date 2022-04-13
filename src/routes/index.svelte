@@ -66,7 +66,7 @@
 
   h1 {
     font-size: $font-size-normal;
-    color: $primary-one;
+    color: var(--main-color);
     margin-top: 0;
   }
 
@@ -127,15 +127,15 @@
   }
 
   .box {
-    border: $border-style;
+    border: 2px solid var(--main-color);
     margin-bottom: 20px;
 
     .label {
       height: 25px;
-      background: $primary-two;
+      background: var(--main-color);
       font-size: $font-size-x-small;
       font-family: $secondary-font;
-      color: $background-color;
+      color: $light-color;
       width: 100%;
       text-align: center;
       line-height: 25px;
@@ -154,13 +154,13 @@
 
     &.goto {
       cursor: pointer;
-      color: $primary-two;
+      color: var(--main-color);
       display: block;
       text-decoration: none;
 
       &:hover {
-        background: $primary-two;
-        color: $background-color;
+        background: var(--main-color);
+        color: $light-color;
       }
     }
   }

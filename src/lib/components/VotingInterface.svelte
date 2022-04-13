@@ -128,7 +128,7 @@
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    border-top: $border-style;
+    border-top: 2px solid var(--main-color);
 
     @include screen-size("small") {
       flex-wrap: wrap;
@@ -162,12 +162,12 @@
       height: $bar-height;
       height: 100%;
       width: 100px;
-      border-right: $border-style;
+      border-right: 2px solid var(--main-color);
 
       @include screen-size("small") {
         height: 80px;
         width: 33.33%;
-        border-bottom: $border-style;
+        border-bottom: 2px solid var(--main-color);
       }
 
       .number {
@@ -179,7 +179,7 @@
         align-items: center;
         user-select: none;
         flex-direction: column;
-        border-left: $border-style;
+        border-left: 2px solid var(--main-color);
         cursor: pointer;
 
         @include screen-size("small") {
@@ -188,10 +188,10 @@
 
         .label {
           height: 25px;
-          background: $primary-two;
+          background: var(--main-color-two);
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
-          color: $background-color;
+          color: $light-color;
           width: 100%;
           text-align: center;
           line-height: 25px;
@@ -215,7 +215,7 @@
       @include screen-size("small") {
         height: 80px;
         width: 33.33%;
-        border-bottom: $border-style;
+        border-bottom: 2px solid var(--main-color);
       }
 
       .number {
@@ -224,7 +224,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-right: $border-style;
+        border-right: 2px solid var(--main-color);
         flex-direction: column;
 
         @include screen-size("small") {
@@ -233,10 +233,10 @@
 
         .label {
           height: 25px;
-          background: $primary-two;
+          background: var(--main-color-two);
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
-          color: $background-color;
+          color: $light-color;
           width: 100%;
           text-align: center;
           line-height: 25px;
@@ -259,7 +259,7 @@
       @include screen-size("small") {
         height: 80px;
         width: 33.33%;
-        border-bottom: $border-style;
+        border-bottom: 2px solid var(--main-color);
       }
 
       .bar {
@@ -270,8 +270,8 @@
 
         .inner {
           width: 100%;
-          // background: $primary-one;
-          background: $highlight;
+          // background: var(--main-color);
+          background: var(--highlight-color);
           align-self: flex-end;
         }
 
@@ -286,7 +286,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-right: $border-style;
+        border-right: 2px solid var(--main-color);
         flex-direction: column;
 
         @include screen-size("small") {
@@ -295,10 +295,10 @@
 
         .label {
           height: 25px;
-          background: $primary-two;
+          background: var(--main-color-two);
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
-          color: $background-color;
+          color: $light-color;
           width: 100%;
           text-align: center;
           line-height: 25px;

@@ -50,7 +50,7 @@
     .item {
       display: flex;
       align-items: center;
-      border: $border-style;
+      border: 2px solid var(--main-color);
       flex-direction: column;
 
       @include screen-size("small") {
@@ -59,10 +59,10 @@
 
       .label {
         height: 25px;
-        background: $primary-two;
+        background: var(--main-color);
         font-size: $font-size-xx-small;
         font-family: $secondary-font;
-        color: $background-color;
+        color: $light-color;
         width: 100%;
         text-align: center;
         line-height: 25px;
@@ -84,7 +84,7 @@
   .header {
     font-weight: bold;
     margin-bottom: 10px;
-    color: $primary-two;
+    color: var(--main-color);
   }
 
   .button {
@@ -92,11 +92,11 @@
     padding-left: 20px;
     padding-right: 20px;
     height: 80px;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     color: inherit;
     text-decoration: none;
     line-height: 80px;
-    color: $primary-two;
+    color: var(--main-color);
     font-size: $font-size-normal;
     user-select: none;
 
@@ -105,8 +105,8 @@
     }
 
     &:hover {
-      background: $primary-two;
-      color: $background-color;
+      background: var(--main-color);
+      color: $light-color;
     }
   }
 </style>

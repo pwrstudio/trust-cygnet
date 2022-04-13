@@ -42,11 +42,11 @@
     padding: 0;
     pointer-events: none;
     display: flex;
-    border-top: $border-style;
+    border-top: 2px solid var(--main-color);
 
     .inner {
       width: 100%;
-      background: $highlight;
+      background: var(--highlight-color);
       align-self: flex-end;
     }
   }
@@ -57,16 +57,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: $border-style;
+    border-right: 2px solid var(--main-color);
     flex-direction: column;
-    border-top: $border-style;
+    border-top: 2px solid var(--main-color);
 
     .label {
       height: 25px;
-      background: $primary-two;
+      background: var(--main-color);
       font-size: $font-size-xx-small;
       font-family: $secondary-font;
-      color: $background-color;
+      color: $light-color;
       width: 100%;
       text-align: center;
       line-height: 25px;

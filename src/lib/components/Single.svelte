@@ -155,8 +155,8 @@
       text-transform: uppercase;
       text-align: center;
       &:hover {
-        background: $primary-two;
-        border: 1px solid $primary-two;
+        background: var(--main-color-two);
+        border: 1px solid var(--main-color-two);
       }
     }
   }
@@ -171,7 +171,7 @@
 
     h1 {
       font-size: $font-size-normal;
-      color: $primary-one;
+      color: var(--main-color);
     }
 
     .body {
@@ -264,7 +264,7 @@
   .role-badge {
     font-family: $secondary-font;
     font-size: $font-size-x-small;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     margin-right: 5px;
     padding: 3px 7px;
     padding-top: 5px;
@@ -274,7 +274,7 @@
 
     &.active {
       background: $foreground-color;
-      color: $background-color;
+      color: $light-color;
     }
   }
 

@@ -64,7 +64,7 @@
 
   input {
     width: 100%;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     font-family: $secondary-font;
     padding: 10px;
     font-size: $font-size-normal;
@@ -82,17 +82,17 @@
     background: transparent;
     font-weight: normal;
     padding: 30px;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     min-width: 180px;
     width: auto;
     font-size: $font-size-normal;
-    color: $primary-two;
+    color: var(--main-color);
     display: inline-block;
     margin-top: 20px;
 
     &:hover {
-      background: $primary-two;
-      color: $background-color;
+      background: var(--main-color-two);
+      color: $light-color;
     }
   }
 

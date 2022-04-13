@@ -66,7 +66,7 @@
     text-decoration: none;
 
     &:hover {
-      background: $primary-three;
+      background: var(--main-color-three);
     }
 
     .image {

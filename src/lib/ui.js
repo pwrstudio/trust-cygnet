@@ -1,9 +1,23 @@
 import { writable } from 'svelte/store'
+import { get } from 'svelte/store';
+import chroma from "chroma-js";
+import { general } from "$lib/data.js"
 export const currentSection = writable('')
+
+export const setThemeColors = () => {
+    let root = document.documentElement;
+    if (root.style) {
+        root.style.setProperty('--main-color', get(general).mainColor);
+        root.style.setProperty('--main-color-two', chroma(get(general).mainColor).darken(0.4).hex());
+        root.style.setProperty('--main-color-three', chroma(get(general).mainColor).alpha(0.1).hex());
+        root.style.setProperty('--highlight-color', get(general).highlightColor);
+    }
+}
 
 // ____
 // ____ Date
 // ___
+
 import { format, parseISO, formatDistanceToNow, isFuture } from "date-fns"
 
 export const dotFormatDate = date => {

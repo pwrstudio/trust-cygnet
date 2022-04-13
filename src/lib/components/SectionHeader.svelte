@@ -29,7 +29,7 @@
 
     h2 {
       font-size: $font-size-normal;
-      color: $primary-two;
+      color: var(--main-color);
     }
   }
 </style>

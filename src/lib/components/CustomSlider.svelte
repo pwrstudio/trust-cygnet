@@ -135,7 +135,7 @@
     height: 20px;
     text-align: center;
     cursor: pointer;
-    color: $background-color;
+    color: $light-color;
     border: 1px solid $foreground-color;
     border-radius: 50%;
     line-height: 18px;
@@ -150,7 +150,7 @@
     height: 20px;
     text-align: center;
     cursor: pointer;
-    color: $background-color;
+    color: $light-color;
     border: 1px solid $foreground-color;
     border-radius: 50%;
     line-height: 16px;
@@ -170,7 +170,7 @@
       top: 50%;
       margin-top: -10px;
       left: 0;
-      background: $primary-two;
+      background: var(--main-color);
       cursor: grab;
 
       &.drag {
@@ -203,8 +203,8 @@
       height: 30px;
       width: 30px;
       border-radius: 50%;
-      // background: $primary-one;
-      background: $highlight;
+      // background: var(--main-color);
+      background: var(--highlight-color);
       border: 1px solid $background-color;
       left: 0;
       top: calc(50% + 2px);

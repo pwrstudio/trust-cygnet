@@ -24,7 +24,7 @@
       width: 100%;
       margin-right: auto;
       margin-left: auto;
-      border-bottom: $border-style;
+      border-bottom: 2px solid var(--main-color);
     }
   }
 </style>

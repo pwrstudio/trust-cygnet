@@ -73,7 +73,7 @@
   .result-header {
     width: 100%;
     height: 120px;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     display: flex;
     font-size: $font-size-x-small;
     font-family: $secondary-font;
@@ -89,7 +89,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border-right: $border-style;
+      border-right: 2px solid var(--main-color);
 
       @include screen-size("small") {
         width: 100%;
@@ -119,10 +119,10 @@
 
       .label {
         height: 40px;
-        background: $primary-two;
+        background: var(--main-color);
         font-size: $font-size-xx-small;
         font-family: $secondary-font;
-        color: $background-color;
+        color: $light-color;
         width: 100%;
         text-align: center;
         line-height: 40px;

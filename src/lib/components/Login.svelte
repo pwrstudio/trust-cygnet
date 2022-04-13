@@ -6,10 +6,14 @@
 </script>
 
 <div class="login-container">
-  {#if $general.logo}
+  {#if $general.bigLogo}
     <div class="logo-container">
       <img
-        src={urlFor($general.logo).width(400).quality(100).auto("format").url()}
+        src={urlFor($general.bigLogo)
+          .width(400)
+          .quality(100)
+          .auto("format")
+          .url()}
       />
     </div>
   {:else}
@@ -59,16 +63,16 @@
       padding-right: 30px;
       padding-top: 20px;
       padding-bottom: 20px;
-      border: $border-style;
+      border: 2px solid var(--main-color);
       cursor: pointer;
       z-index: 10000;
       font-family: $secondary-font;
       font-size: $font-size-normal;
       border-radius: 0;
-      color: $primary-two;
+      color: var(--main-color);
 
       &:hover {
-        background: $primary-two;
+        background: var(--main-color);
         color: $foreground-color;
       }
     }

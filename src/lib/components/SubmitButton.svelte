@@ -40,12 +40,12 @@
     &.submitted {
       cursor: default;
       pointer-events: none;
-      background: $primary-two;
+      background: var(--main-color);
     }
 
     &:hover {
-      background: $primary-one;
-      color: $background-color;
+      background: var(--main-color);
+      color: $light-color;
     }
   }
 </style>

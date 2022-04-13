@@ -276,7 +276,7 @@
 
   input {
     width: 100%;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     font-family: $secondary-font;
   }
 
@@ -315,9 +315,9 @@
     min-width: 180px;
 
     &:hover {
-      background: $primary-two;
+      background: var(--main-color-two);
       color: $foreground-color;
-      border: 1px solid $primary-two;
+      border: 1px solid var(--main-color-two);
     }
 
     .text {
@@ -386,15 +386,15 @@
       background: transparent;
       font-weight: normal;
       padding: 30px;
-      border: $border-style;
+      border: 2px solid var(--main-color);
       min-width: 180px;
       font-size: $font-size-normal;
-      color: $primary-two;
+      color: var(--main-color);
       user-select: none;
 
       &:hover {
-        background: $primary-two;
-        color: $background-color;
+        background: var(--main-color);
+        color: $light-color;
       }
     }
 

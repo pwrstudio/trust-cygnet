@@ -153,7 +153,7 @@
   .vote-header {
     width: 100%;
     height: 120px;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     display: flex;
     font-size: $font-size-x-small;
     font-family: $secondary-font;
@@ -170,7 +170,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border-right: $border-style;
+      border-right: 2px solid var(--main-color);
 
       @include screen-size("small") {
         width: 100%;
@@ -200,10 +200,10 @@
 
       .label {
         height: 40px;
-        background: $primary-two;
+        background: var(--main-color);
         font-size: $font-size-xx-small;
         font-family: $secondary-font;
-        color: $background-color;
+        color: $light-color;
         width: 100%;
         text-align: center;
         line-height: 40px;
@@ -252,7 +252,7 @@
       .item {
         display: flex;
         align-items: center;
-        border: $border-style;
+        border: 2px solid var(--main-color);
         flex-direction: column;
 
         @include screen-size("small") {
@@ -269,10 +269,10 @@
 
         .label {
           height: 25px;
-          background: $primary-two;
+          background: var(--main-color);
           font-size: $font-size-xx-small;
           font-family: $secondary-font;
-          color: $background-color;
+          color: $light-color;
           width: 100%;
           text-align: center;
           line-height: 25px;
@@ -298,17 +298,17 @@
     padding-left: 20px;
     padding-right: 20px;
     height: 80px;
-    border: $border-style;
+    border: 2px solid var(--main-color);
     color: inherit;
     text-decoration: none;
     line-height: 80px;
-    color: $primary-two;
+    color: var(--main-color);
     font-size: $font-size-normal;
     cursor: pointer;
     user-select: none;
 
     &:hover {
-      background: $primary-two;
+      background: var(--main-color);
       color: $foreground-color;
     }
 
@@ -336,7 +336,7 @@
     display: block;
     padding-left: 20px;
     padding-right: 20px;
-    // border: $border-style;
+    // border: 2px solid var(--main-color);
     color: inherit;
     text-decoration: none;
     line-height: 80px;
@@ -345,19 +345,19 @@
     user-select: none;
     text-align: center;
     margin-bottom: 80px;
-    background: $primary-one;
-    color: $background-color;
-    border: 2px solid $primary-one;
+    background: var(--main-color);
+    color: $light-color;
+    border: 2px solid var(--main-color);
 
     &.submitted {
-      border: $border-style;
-      color: $primary-two;
+      border: 2px solid var(--main-color);
+      color: var(--main-color);
       background: transparent;
     }
 
     &:hover {
-      border: 2px solid $primary-two;
-      background: $primary-two;
+      border: 2px solid var(--main-color-two);
+      background: var(--main-color-two);
       color: $foreground-color;
     }
 

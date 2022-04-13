@@ -3,7 +3,7 @@
 </script>
 
 <div class="loading-indicator">
-  <Circle size="60" color="#0000ff" unit="px" duration="1s" />
+  <Circle size="60" color="#191919" unit="px" duration="1s" />
 </div>
 
 <style lang="scss">

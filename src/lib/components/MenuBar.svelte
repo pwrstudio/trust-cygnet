@@ -130,10 +130,10 @@
   <div class="left-side">
     <!-- (1) TITLE -->
     <a href="/" class="title">
-      {#if $general.logo}
+      {#if $general.smallLogo}
         <div class="logo-container">
           <img
-            src={urlFor($general.logo)
+            src={urlFor($general.smallLogo)
               .width(100)
               .quality(90)
               .auto("format")
@@ -248,8 +248,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: $primary-one;
-    color: $background-color;
+    background: var(--main-color);
+    color: $light-color;
     z-index: 10000;
     display: flex;
     justify-content: center;
@@ -268,11 +268,11 @@
 
         div {
           display: inline-block;
-          border-bottom: 2px solid $primary-one;
+          border-bottom: 2px solid var(--main-color);
         }
 
         &:active {
-          background: $primary-one;
+          background: var(--main-color);
         }
       }
     }
@@ -291,7 +291,7 @@
   }
 
   .menu-bar {
-    background: $primary-one;
+    background: var(--main-color);
     box-sizing: border-box;
     font-size: $font-size-small;
     position: fixed;
@@ -300,7 +300,7 @@
     height: 50px;
     width: 100%;
     z-index: 10000;
-    color: $background-color;
+    color: $light-color;
     display: flex;
     justify-content: space-between;
     user-select: none;
@@ -311,7 +311,7 @@
 
     .hamburger {
       display: none;
-      color: $background-color;
+      color: $light-color;
 
       @include screen-size("small") {
         padding-left: 20px;
@@ -322,7 +322,7 @@
         align-items: center;
 
         &:active {
-          background: $primary-one;
+          background: var(--main-color);
         }
       }
     }
@@ -341,7 +341,7 @@
         text-decoration: none;
 
         &:hover {
-          background: $primary-two;
+          background: var(--main-color-two);
         }
 
         .logo-container {
@@ -373,7 +373,7 @@
           cursor: pointer;
 
           &:hover {
-            background: $primary-two;
+            background: var(--main-color-two);
           }
         }
 
@@ -434,7 +434,7 @@
         text-decoration: none;
 
         &:hover {
-          background: $primary-two;
+          background: var(--main-color-two);
         }
 
         &:last-of-type {
@@ -442,7 +442,7 @@
         }
 
         &.active {
-          background: $primary-two;
+          background: var(--main-color-two);
         }
       }
 
@@ -461,7 +461,7 @@
         }
 
         &:hover {
-          background: $primary-two;
+          background: var(--main-color-two);
         }
 
         .avatar-container {
@@ -475,7 +475,7 @@
             height: 30px;
             border-radius: 50%;
             object-fit: cover;
-            background: $primary-two;
+            background: var(--main-color-two);
           }
         }
       }
@@ -486,8 +486,8 @@
     position: fixed;
     top: 50px;
     left: 0px;
-    background: $primary-one;
-    color: $background-color;
+    background: var(--main-color);
+    color: $light-color;
     font-size: $font-size-small;
     z-index: 100000;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.6);
@@ -495,10 +495,10 @@
     .cycle-switch-item {
       padding: 10px;
       cursor: pointer;
-      border-top: 1px solid $background-color;
+      border-top: 1px solid $light-color;
 
       &:hover {
-        background: $primary-two;
+        background: var(--main-color-two);
       }
     }
   }
@@ -507,8 +507,8 @@
     position: fixed;
     top: 50px;
     right: 0px;
-    background: $primary-one;
-    color: $background-color;
+    background: var(--main-color);
+    color: $light-color;
     font-size: $font-size-small;
     z-index: 100000;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.6);
@@ -521,7 +521,7 @@
       text-decoration: none;
 
       &:hover {
-        background: $primary-two;
+        background: var(--main-color-two);
       }
     }
   }
