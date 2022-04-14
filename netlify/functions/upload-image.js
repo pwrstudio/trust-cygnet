@@ -21,21 +21,13 @@ exports.handler = async (event, context) => {
     console.log(contentType)
     // const imageBuffer = toBuffer(event.body)
     // if(body.isBase64Encoded) {
-    const imageBuffer = Buffer.from(event.body, "base64")
+    const imageBuffer = await Buffer.from(event.body, "base64")
     console.log(imageBuffer)
-    client.assets.upload('image', imageBuffer, { contentType: contentType }).then((document) => {
-        console.log('The image was uploaded!', document)
-        return {
-            statusCode: 200,
-            headers: HEADERS,
-            body: JSON.stringify(document)
-        };
-    }).catch((error) => {
-        console.error('Upload failed:', error.message)
-        return {
-            statusCode: 500,
-            headers: HEADERS,
-            body: JSON.stringify(error.message)
-        };
-    })
+    const document = client.assets.upload('image', imageBuffer, { contentType: contentType, filename: 'asdfasfdasdf' })
+    console.log('The image was uploaded!', document)
+    return {
+        statusCode: 200,
+        headers: HEADERS,
+        body: JSON.stringify(document)
+    };
 }
