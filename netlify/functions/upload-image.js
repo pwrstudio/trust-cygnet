@@ -18,13 +18,13 @@ const HEADERS = {
 exports.handler = async (event, context) => {
     try {
         console.log(event)
-        const contentType = _.get(event, 'headers["content-type"]', "image/jpeg")
-        console.log(contentType)
+        // const contentType = _.get(event, 'headers["content-type"]', "image/jpeg")
+        // console.log(contentType)
         // const imageBuffer = toBuffer(event.body)
         // if(body.isBase64Encoded) {
         const imageBuffer = await Buffer.from(event.body, "base64")
         console.log(imageBuffer)
-        const document = await client.assets.upload('image', imageBuffer, { contentType: contentType, filename: 'asdfasfdasdf' })
+        const document = await client.assets.upload('image', event.body)
         console.log('The image was uploaded!', document)
         return {
             statusCode: 200,
