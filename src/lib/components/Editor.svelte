@@ -169,7 +169,7 @@
             console.log(file)
             if (file) {
               image = await uploadImage(file)
-              console.log(image)
+              console.log("image", image)
               if (image._id) {
                 imageRef = {
                   _type: "image",

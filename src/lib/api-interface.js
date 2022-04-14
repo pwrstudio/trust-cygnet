@@ -13,15 +13,15 @@ const toBase64 = file => new Promise((resolve, reject) => {
 export const uploadImage = file => {
     return new Promise(async (resolve, reject) => {
         console.log(file)
-        const base64Encoded = await toBase64(file)
-        console.log('base64Encoded', base64Encoded)
+        // const base64Encoded = await toBase64(file)
+        // console.log('base64Encoded', base64Encoded)
         const requestOptions = {
             method: "POST",
-            body: base64Encoded,
+            body: file,
             redirect: "follow",
         }
-        const response = await fetch("https://trust.cyg.network/.netlify/functions/upload-image", requestOptions)
-        // const response = await fetch("/api/upload-image", requestOptions)
+        // const response = await fetch("https://trust.cyg.network/.netlify/functions/upload-image", requestOptions)
+        const response = await fetch("/api/upload-image", requestOptions)
         console.log(response)
         if (response.ok) {
             const responseData = await response.json()
