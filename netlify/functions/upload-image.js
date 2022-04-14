@@ -25,8 +25,7 @@ const HEADERS = {
 
 exports.handler = async (event, context) => {
     console.log(event)
-    const body = await event.body.arrayBuffer()
-    const imageBuffer = toBuffer(body)
+    const imageBuffer = toBuffer(event.body)
     const document = await client.assets.upload('image', imageBuffer)
     console.log('The image was uploaded!', document)
     return {
