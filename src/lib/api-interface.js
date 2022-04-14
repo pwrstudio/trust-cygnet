@@ -3,25 +3,32 @@ import {
 } from "$lib/authentication.js"
 
 
-const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-});
+// const toBase64 = file => new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+//     reader.onload = () => resolve(reader.result);
+//     reader.onerror = error => reject(error);
+// });
 
 export const uploadImage = file => {
     return new Promise(async (resolve, reject) => {
+
         console.log(file)
+        let formData = new FormData()
+        if (file) {
+            formData.append("mainImage", file, file.name)
+        }
         // const base64Encoded = await toBase64(file)
         // console.log('base64Encoded', base64Encoded)
         const requestOptions = {
             method: "POST",
-            body: file,
+            body: formData,
             redirect: "follow",
         }
+        const response = await fetch("https://graphics.eyebeam.dev", requestOptions)
+
         // const response = await fetch("https://trust.cyg.network/.netlify/functions/upload-image", requestOptions)
-        const response = await fetch("/api/upload-image", requestOptions)
+        // const response = await fetch("/api/upload-image", requestOptions)
         console.log(response)
         if (response.ok) {
             const responseData = await response.json()
