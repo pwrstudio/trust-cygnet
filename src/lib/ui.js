@@ -4,6 +4,13 @@ import chroma from "chroma-js";
 import { general } from "$lib/data.js"
 export const currentSection = writable('')
 
+const changeThemeColor = color => {
+    const metaThemeColor = document.querySelector("meta[name=theme-color]");
+    if (metaThemeColor) {
+        metaThemeColor.setAttribute("content", color);
+    }
+}
+
 export const setThemeColors = () => {
     let root = document.documentElement;
     if (root.style) {
@@ -11,6 +18,7 @@ export const setThemeColors = () => {
         root.style.setProperty('--main-color-two', chroma(get(general).mainColor).darken(0.4).hex());
         root.style.setProperty('--main-color-three', chroma(get(general).mainColor).alpha(0.1).hex());
         root.style.setProperty('--highlight-color', get(general).highlightColor);
+        changeThemeColor(get(general).mainColor);
     }
 }
 
