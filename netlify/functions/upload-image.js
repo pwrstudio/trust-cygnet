@@ -24,7 +24,7 @@ const HEADERS = {
 }
 
 exports.handler = async (event, context) => {
-    // console.log(event)
+    console.log(event)
     // const imageBuffer = toBuffer(event.body)
     // if(body.isBase64Encoded) {
     const imageBuffer = await Buffer.from(event.body, "base64")
