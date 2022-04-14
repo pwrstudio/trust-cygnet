@@ -15,7 +15,7 @@ const HEADERS = {
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
 }
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log(event)
     const contentType = _.get(event, 'headers["content-type"]', "image/jpeg")
     console.log(contentType)
