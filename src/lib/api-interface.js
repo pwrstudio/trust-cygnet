@@ -9,9 +9,15 @@ export const uploadImage = file => {
             body: file,
             redirect: "follow",
         }
-        const response = await fetch("/api/upload-image", requestOptions)
-        const responseData = await response.json()
-        resolve(responseData)
+        const response = await fetch("https://trust.cyg.network/.netlify/functions/upload-image", requestOptions)
+        // const response = await fetch("/api/upload-image", requestOptions)
+        console.log(response)
+        if (response.ok) {
+            const responseData = await response.json()
+            resolve(responseData)
+            return
+        }
+        resolve({})
     })
 }
 

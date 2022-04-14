@@ -170,12 +170,14 @@
             if (file) {
               image = await uploadImage(file)
               console.log(image)
-              imageRef = {
-                _type: "image",
-                asset: {
-                  _ref: image._id,
-                  _type: "reference",
-                },
+              if (image._id) {
+                imageRef = {
+                  _type: "image",
+                  asset: {
+                    _ref: image._id,
+                    _type: "reference",
+                  },
+                }
               }
             }
           }}
