@@ -25,7 +25,9 @@ const HEADERS = {
 
 exports.handler = async (event, context) => {
     console.log(event)
-    const imageBuffer = toBuffer(event.body)
+    // const imageBuffer = toBuffer(event.body)
+    // if(body.isBase64Encoded) {
+    const imageBuffer = Buffer.from(body, "base64")
     const document = await client.assets.upload('image', imageBuffer)
     console.log('The image was uploaded!', document)
     return {
