@@ -1,4 +1,5 @@
 const sanity = require("@sanity/client")
+const _ = require('lodash')
 
 const client = sanity({
     projectId: process.env.VITE_SANITY_ID,
@@ -7,15 +8,6 @@ const client = sanity({
     useCdn: false,
 })
 
-const toBuffer = (ab) => {
-    const buf = Buffer.alloc(ab.byteLength);
-    const view = new Uint8Array(ab);
-    for (let i = 0; i < buf.length; ++i) {
-        buf[i] = view[i];
-    }
-    return buf;
-}
-
 const HEADERS = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
@@ -23,17 +15,27 @@ const HEADERS = {
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
 }
 
-exports.handler = async (event, context) => {
+exports.handler = (event, context) => {
     console.log(event)
+    const contentType = _.get(event, 'headers["content-type"]', "image/jpeg")
+    console.log(contentType)
     // const imageBuffer = toBuffer(event.body)
     // if(body.isBase64Encoded) {
-    const imageBuffer = await Buffer.from(event.body, "base64")
+    const imageBuffer = Buffer.from(event.body, "base64")
     console.log(imageBuffer)
-    const document = await client.assets.upload('image', imageBuffer)
-    console.log('The image was uploaded!', document)
-    return {
-        statusCode: 200,
-        headers: HEADERS,
-        body: JSON.stringify(document)
-    };
+    client.assets.upload('image', imageBuffer, { contentType: contentType }).then((document) => {
+        console.log('The image was uploaded!', document)
+        return {
+            statusCode: 200,
+            headers: HEADERS,
+            body: JSON.stringify(document)
+        };
+    }).catch((error) => {
+        console.error('Upload failed:', error.message)
+        return {
+            statusCode: 500,
+            headers: HEADERS,
+            body: JSON.stringify(error.message)
+        };
+    })
 }
