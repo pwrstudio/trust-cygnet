@@ -46,7 +46,7 @@
     const query = window.location.search
     if (query.includes("error=")) {
       const parsedQuery = queryString.parse(query)
-      errorMessage = "Access denied: " + parsedQuery.error_description
+      errorMessage = parsedQuery.error_description
     }
     if (query.includes("code=") && query.includes("state=")) {
       await handleRedirectCallback()
