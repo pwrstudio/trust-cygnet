@@ -161,7 +161,7 @@
       }}
     >
       {#if $currentCycle && $currentCycle.title}
-        <div>
+        <div class="cycle-title">
           <strong>Cycle:</strong>
           {$currentCycle.title}
           {#if $availableCycles.length > 1}
@@ -169,16 +169,19 @@
           {/if}
         </div>
       {:else}
-        <div><strong>No cycle found</strong></div>
+        <div class="cycle-title"><strong>No cycle found</strong></div>
       {/if}
     </div>
 
     <!-- (3) PHASE -->
     <div class="phase">
       {#if $currentCycle && $currentCycle.phase}
-        <div><strong>Phase:</strong> {$currentCyclePhaseName}</div>
+        <div class="phase-title">
+          <strong>Phase:</strong>
+          {$currentCyclePhaseName}
+        </div>
       {:else}
-        <div><strong>No phase found</strong></div>
+        <div class="phase-title"><strong>No phase found</strong></div>
       {/if}
     </div>
   </div>
@@ -353,9 +356,7 @@
           img {
             width: auto;
             height: 40px;
-            // border-radius: 5px;
             object-fit: cover;
-            // background: $secondary-two;
           }
         }
       }
@@ -368,6 +369,13 @@
         padding-left: 20px;
         border-left: 1px solid $secondary-two;
         min-width: 140px;
+        overflow: hidden;
+
+        .cycle-title {
+          width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
 
         &.action {
           cursor: pointer;
@@ -391,6 +399,12 @@
         border-left: 1px solid $secondary-two;
         &:last-of-type {
           border-right: 1px solid $secondary-two;
+        }
+
+        .phase-title {
+          width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
 
         @include screen-size("small") {
