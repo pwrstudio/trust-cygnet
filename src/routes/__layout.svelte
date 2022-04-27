@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte"
+  import queryString from "query-string"
   import MenuBar from "$lib/components/MenuBar.svelte"
   import Footer from "$lib/components/Footer.svelte"
   import Login from "$lib/components/Login.svelte"
@@ -35,6 +36,7 @@
   // $: console.log("$voteAllocation", $voteAllocation)
 
   let authenticationInProgress = true
+  let errorMessage = false
 
   onMount(async () => {
     console.log("__ Starting app...")
@@ -42,6 +44,10 @@
     await configureAuthClient()
     console.log("____ Auth client configured")
     const query = window.location.search
+    if (query.includes("error=")) {
+      const parsedQuery = queryString.parse(query)
+      errorMessage = "Access denied: " + parsedQuery.error_description
+    }
     if (query.includes("code=") && query.includes("state=")) {
       await handleRedirectCallback()
     }
@@ -76,7 +82,7 @@
   </main>
   <Footer />
 {:else}
-  <Login />
+  <Login {errorMessage} />
 {/if}
 
 <Background />

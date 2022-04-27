@@ -3,6 +3,8 @@
   import { urlFor, renderBlockText } from "$lib/sanity"
   import { login } from "$lib/authentication.js"
   import { general } from "$lib/data.js"
+
+  export let errorMessage = false
 </script>
 
 <div class="login-container">
@@ -24,6 +26,9 @@
     <div class="pre-login-text">
       {@html renderBlockText(get($general, "preLoginText.content", []))}
     </div>
+  {/if}
+  {#if errorMessage}
+    <div class="error">{errorMessage}</div>
   {/if}
   <div class="login" on:click={login}>Login</div>
 </div>
@@ -76,5 +81,11 @@
         color: $foreground-color;
       }
     }
+  }
+
+  .error {
+    background: $error-color;
+    padding: 20px;
+    margin-bottom: 20px;
   }
 </style>

@@ -36,6 +36,7 @@
     "jwks-rsa": "^2.0.5",
     "lodash": "^4.17.21",
     "nanoid": "^3.2.0",
+    "query-string": "^7.1.1",
     "slugify": "^1.6.5",
     "svelte-loading-spinners": "^0.1.7",
     "svelte-markdown": "^0.2.2",
