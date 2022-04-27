@@ -20,15 +20,18 @@ export const post = async (event) => {
     // const imgRes = await client.assets.upload("image", fs.createReadStream('./uploads/' + req.file.filename, { contentType: req.file.mimetype, filename: req.file.filename }))
     // console.log(imgRes)
     const message = body.message
+    // Avoid slug collisions
+    const id = message.id ? message.id : uuidv4()
+    const slug = slugify(message.title) + '-' + id.split('-')[0]
     // Create the proposal document
     let doc = {
         _type: 'proposal',
-        _id: message.id ? message.id : uuidv4(),
+        _id: id,
         title: message.title,
         slug:
         {
             _type: "slug",
-            current: slugify(message.title)
+            current: slug,
         },
         cycle: {
             _type: "reference",
