@@ -150,7 +150,10 @@
       />
     </div>
     <!-- RESOURCES -->
-    <div class="resource-container">
+    <div
+      class="resource-container"
+      class:visible={$resourcesInCycle.length > 0}
+    >
       <Select
         items={resourcesItems}
         bind:value={resourcesValue}
@@ -282,11 +285,21 @@
     font-family: $secondary-font;
   }
 
-  .peer-container,
+  .peer-container {
+    margin-bottom: 20px;
+    font-size: $font-size-small;
+    color: $foreground-color;
+  }
+
   .resource-container {
     margin-bottom: 20px;
     font-size: $font-size-small;
     color: $foreground-color;
+    display: none;
+
+    &.visible {
+      display: block;
+    }
   }
 
   .peer-container {
