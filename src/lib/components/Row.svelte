@@ -2,6 +2,7 @@
   import VotingInterface from "./VotingInterface.svelte"
   import ResultDisplay from "./ResultDisplay.svelte"
   import SubmitButton from "./SubmitButton.svelte"
+  import DeleteButton from "./DeleteButton.svelte"
   import Information from "./Information.svelte"
   export let item = {}
   export let phase = ""
@@ -16,6 +17,9 @@
   {#if phase === "proposal" && item._type === "proposal"}
     <div class="actions">
       <SubmitButton {item} />
+      {#if !item.submitted}
+        <DeleteButton {item} />
+      {/if}
     </div>
   {/if}
 
@@ -77,7 +81,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-width: 140px;
+      min-width: 200px;
       border-top: 2px solid var(--main-color);
 
       @include screen-size("small") {

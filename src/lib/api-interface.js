@@ -167,3 +167,27 @@ export const connectEthAddress = messageBody => {
         }
     })
 }
+
+export const deleteProposal = async proposal => {
+    try {
+        // Get token
+        const token = await getTokenSilently()
+        // Prepare message body
+        const rawBody = JSON.stringify({
+            proposalId: proposal._id,
+            authorization: token
+        })
+        // Set message options
+        const requestOptions = {
+            method: "POST",
+            body: rawBody,
+            redirect: "follow",
+        }
+        // Send message
+        const response = await fetch("/api/delete-proposal", requestOptions)
+        const responseData = await response.json()
+        console.log(responseData)
+    } catch (e) {
+        console.log(e.message)
+    }
+}
