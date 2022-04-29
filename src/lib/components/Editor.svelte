@@ -7,9 +7,7 @@
   import { saveProposal, uploadImage } from "$lib/api-interface.js"
   import LoadingIndicator from "./LoadingIndicator.svelte"
   import { compactDateTimeFormat } from "$lib/ui.js"
-
-  $: console.log("image id", image._id)
-  $: console.log("imageRef", imageRef)
+  import { goto } from "$app/navigation"
 
   export let proposal = {}
   let title = ""
@@ -97,6 +95,8 @@
       const res = await saveProposal(messageBody)
       proposal = res
       processing = false
+      // Redirect to listing after saving
+      goto("/proposal")
     }
   }
 
