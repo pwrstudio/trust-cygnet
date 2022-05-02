@@ -25,7 +25,7 @@ export const uploadImage = file => {
             body: formData,
             redirect: "follow",
         }
-        const response = await fetch("https://graphics.eyebeam.dev", requestOptions)
+        const response = await fetch("https://graphics.eyebeam.dev/trust", requestOptions)
 
         // const response = await fetch("https://trust.cyg.network/.netlify/functions/upload-image", requestOptions)
         // const response = await fetch("/api/upload-image", requestOptions)
